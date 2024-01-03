@@ -1,0 +1,6 @@
+@PharmaRep.WebAPI_HostAddress = http://localhost:5043
+
+GET {{PharmaRep.WebAPI_HostAddress}}/drug/
+Accept: application/json
+
+###

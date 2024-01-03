@@ -1,0 +1,39 @@
+version: '3.4'
+
+services:
+  # webapp:
+  #   image: your-dotnet-image
+  #   build:
+  #     context: ./WebApp
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "8000:80"
+  #   depends_on:
+  #     - db
+  #   environment:
+  #     ConnectionStrings__DefaultConnection: "Server=db;Database=master;User=sa;Password=Your_password123;"
+
+  db:
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    environment:
+      SA_PASSWORD: "Your_password123"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - ./database/:/usr/src/sql/
+    command: bash -c "/usr/src/sql/entrypoint.sh"
+    # command: >
+    #   /bin/bash -c "
+    #     /opt/mssql/bin/sqlservr &
+    #     sleep 10
+    #     /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P Your_password123 -d master -i /usr/src/sql/init.sql
+    #      wait $!
+    #   "
+
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: "Your_password123"
+    ports:
+      - "3306:3306"
