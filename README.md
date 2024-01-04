@@ -34,7 +34,22 @@ docker-compose up
 `webapp`: This container runs the main application, which is built using .NET 8. This application serves as the front-end interface for users to interact with. It communicates with the db container to perform database operations.
 
 `db`: This container runs SQL Server, which is used to store and manage the application's data. It receives requests from the webapp container and performs the necessary database operations.
+>entrypoint.sh will generate the initial data on Database
 
+#### Tables:
+- Drug: This table stores information about various drugs, including their names, description, and other relevant details.
+
+- DrugReaction: This table associates drugs with potential medical reactions. It serves as a many-to-many relationship table between the Drug and MedicalReaction tables.
+
+- DrugIndication: This table associates drugs with the medical conditions they are used to treat. It serves as a many-to-many relationship table between the Drug and MedicalCondition tables.
+
+- PharmaUser: This table stores information about the users of the Pharma-Application;
+
+- MedicalCondition: This table stores information about various medical conditions that can be treated with drugs.
+
+- MedicalReaction: This table stores information about potential medical reactions that can occur when a drug is taken.
+
+- Brand: This table stores information about the different brands of drugs available in the market.
 
 ### Application Layers
 #### WebAPI
@@ -117,4 +132,5 @@ You can use the [Postman Collection](src/postman-collection/PharmaRep.postman_co
 We can execute APIs and enhance the validations on `Postman.tests`
 
 [Last Execution Result](src/postman-collection/PharmaRep.postman_test_run.json)
+
 ![alt](docs/img/postman-run-collection.png)
