@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Authentication\" />
     <Folder Include="Medicine\Commands\UpdateDrugStatus\" />
   </ItemGroup>
 

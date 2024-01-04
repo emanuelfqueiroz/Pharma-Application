@@ -1,4 +1,5 @@
 # Pharma-Application Documentation
+C# and .NET 8 - Project Sample
 
 ## Introduction
 
@@ -17,6 +18,11 @@ Pharma-Application is a project designed with minimal external dependencies. Thi
 - JWT Authentication
     
 ## Getting Started
+
+## Initial Requirements
+The system should allow users to retrieve detailed information about drugs, including associated medical conditions, potential reactions, and brands.
+
+The system should implement the CQRS pattern, segregating commands (state-modifying requests) and queries (state-reading requests).
 
 ### Usage
 To use the `Pharma-Application`, you need to have Docker and Docker Compose installed on your machine. 
@@ -118,7 +124,12 @@ The Infra layer provides concrete implementations of the interfaces defined in t
 
 Also, the dependency injection is there.
 
-## Features
+## Technical Details
+
+### Unit Tests
+I created the most important tests that validates the drug creation and update.
+
+![alt](docs/img/tests.png)
 
 ### Swagger / OpenAPI
 ![](docs/img/swagger.png)

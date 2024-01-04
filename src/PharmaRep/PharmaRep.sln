@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PharmaRep.Infra", "PharmaRe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PharmaRep.Application", "PharmaRep.Application\PharmaRep.Application.csproj", "{7CBAF614-7441-4FB2-A0C5-46C9DD5C8AF3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{AE52444C-FBDE-4E14-9972-F774BF3B537F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B02EFB8F-A11F-49B4-B689-8DD6F20425EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PharmaRep.Application.Test", "PharmaRep.Application.Test\PharmaRep.Application.Test.csproj", "{FBBFA5D2-7C91-4B18-9A33-49E30B0F077A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PharmaRep.Application.Test", "tests\PharmaRep.Application.Test\PharmaRep.Application.Test.csproj", "{6BCF7DC4-4C2C-4BB4-B99E-05C70D9F77A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,16 +37,16 @@ Global
 		{7CBAF614-7441-4FB2-A0C5-46C9DD5C8AF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CBAF614-7441-4FB2-A0C5-46C9DD5C8AF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CBAF614-7441-4FB2-A0C5-46C9DD5C8AF3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FBBFA5D2-7C91-4B18-9A33-49E30B0F077A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FBBFA5D2-7C91-4B18-9A33-49E30B0F077A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FBBFA5D2-7C91-4B18-9A33-49E30B0F077A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FBBFA5D2-7C91-4B18-9A33-49E30B0F077A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BCF7DC4-4C2C-4BB4-B99E-05C70D9F77A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BCF7DC4-4C2C-4BB4-B99E-05C70D9F77A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BCF7DC4-4C2C-4BB4-B99E-05C70D9F77A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BCF7DC4-4C2C-4BB4-B99E-05C70D9F77A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{FBBFA5D2-7C91-4B18-9A33-49E30B0F077A} = {AE52444C-FBDE-4E14-9972-F774BF3B537F}
+		{6BCF7DC4-4C2C-4BB4-B99E-05C70D9F77A5} = {B02EFB8F-A11F-49B4-B689-8DD6F20425EC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A5C97EBE-FA94-4561-91AE-2ECFFD78EBEA}

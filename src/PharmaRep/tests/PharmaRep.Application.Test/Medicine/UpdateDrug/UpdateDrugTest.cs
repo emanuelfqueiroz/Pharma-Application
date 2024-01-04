@@ -45,7 +45,7 @@ namespace PharmaRep.Application.Test.Medicine.UpdateDrug
 
 
         [Fact]
-        public async Task When_UpdateDrug_Ensure_All_Data_Updated()
+        public async Task When_UpdateDrug_Ensure_All_Data_Updated() 
         {
             var commandHandler = fixture.Create<UpdateDrugCommandHandler>();
             var response = await commandHandler.HandleAsync(fixture.Create<UpdateDrugCommand>());

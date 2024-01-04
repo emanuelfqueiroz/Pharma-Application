@@ -26,8 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PharmaRep.Application\PharmaRep.Application.csproj" />
-    <ProjectReference Include="..\PharmaRep.Domain\PharmaRep.Domain.csproj" />
+    <ProjectReference Include="..\..\PharmaRep.Application\PharmaRep.Application.csproj" />
+    <ProjectReference Include="..\..\PharmaRep.Domain\PharmaRep.Domain.csproj" />
   </ItemGroup>
 
 </Project>
