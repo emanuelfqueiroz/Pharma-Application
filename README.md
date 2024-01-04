@@ -24,6 +24,16 @@ The system should allow users to retrieve detailed information about drugs, incl
 
 The system should implement the CQRS pattern, segregating commands (state-modifying requests) and queries (state-reading requests).
 
+
+### Drug Status Life Cycle
+```mermaid
+graph LR
+    A[Waiting for approval] --> B[Active]
+    B --> C[Inactivated]
+```
+### Drug User Cases
+![alt](docs/img/user-cases.png)
+
 ### Usage
 To use the `Pharma-Application`, you need to have Docker and Docker Compose installed on your machine. 
 Once you have those installed, follow these steps:
@@ -35,6 +45,7 @@ Once you have those installed, follow these steps:
 ```bash
 docker-compose up
 ```
+
 
 #### Containers
 `webapp`: This container runs the main application, which is built using .NET 8. This application serves as the front-end interface for users to interact with. It communicates with the db container to perform database operations.
@@ -112,6 +123,8 @@ This layer is responsible for handling HTTP requests and responses. It includes 
     ]
 }
 ```
+
+
  
 This separation allows for flexibility in scaling, as the Command stack and Query stack can be scaled independently based on their load. It also improves performance, as read and write operations can be optimized separately.
 
