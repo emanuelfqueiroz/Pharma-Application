@@ -14,7 +14,7 @@ namespace PharmaRep.WebAPI.Controllers
     {
         [Authorize]
         [HttpGet]
-        public async Task<IActionResult> Get(MedicalReactionQuery query)
+        public async Task<IActionResult> Get([FromQuery] MedicalReactionQuery query)
         {
             var response = await handler.HandleAsync(query ?? new());
             return Ok(response);

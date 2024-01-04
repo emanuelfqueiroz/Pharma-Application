@@ -125,7 +125,7 @@ CREATE TABLE Drug
     UserCreatedId INT NOT NULL,
     DateCreated DATETIME NOT NULL,
     DrugStatus INT NOT NULL,
-    WebSite VARCHAR(255) NOT NULL,
+    WebSite VARCHAR(255) NULL,
     CONSTRAINT FK_Drug_UserCreated FOREIGN KEY (UserCreatedId) REFERENCES PharmaUser(Id),
     CONSTRAINT FK_Drug_Brand FOREIGN KEY (BrandId) REFERENCES Brand(Id)
 )

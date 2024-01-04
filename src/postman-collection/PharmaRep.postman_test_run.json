@@ -1,0 +1,264 @@
+{
+	"id": "d208810d-bbc1-447f-9484-f6f3389df96e",
+	"name": "PharmaRep",
+	"timestamp": "2024-01-04T01:33:22.388Z",
+	"collection_id": "1583178-db19165e-a8cc-4dcc-9c18-5ce6f152f98c",
+	"folder_id": 0,
+	"environment_id": "1583178-5969c86e-2dcd-4f72-b073-2c11e7b43853",
+	"totalPass": 0,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2024-01-04T01:33:20.530Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "9399569c-5f9b-4c5f-8194-e2b28dc10796",
+			"name": "User/Register",
+			"url": "http://localhost:5043/api/User/signup",
+			"time": 553,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				553
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "b2e2186d-d4e2-411d-831b-a195bfe1ea24",
+			"name": "User/Login",
+			"url": "http://localhost:5043/api/user/login",
+			"time": 560,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				560
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "24070aec-0bb5-4b6b-bb12-e591e0a33321",
+			"name": "MedicalConditions",
+			"url": "http://localhost:5043/api/MedicalConditions",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "7486a7d1-e16e-42b5-9b1b-2614b4012a24",
+			"name": "MedicalReactions",
+			"url": "http://localhost:5043/api/MedicalReactions",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				5
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "eed8f809-9f68-4d67-b7fd-17df06451550",
+			"name": "Brand/List",
+			"url": "http://localhost:5043/api/Brands",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "4a5f6137-7291-4a98-aafb-5972f037dee6",
+			"name": "Drugs/List",
+			"url": "http://localhost:5043/api/Drugs",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "4be20102-77fd-47e9-8188-89be37b1ed4e",
+			"name": "Drugs/ GetById",
+			"url": "http://localhost:5043/api/Drugs/1",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				11
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "51e44a9a-c313-4f46-9571-978f75db1937",
+			"name": "Drugs/Create",
+			"url": "http://localhost:5043/api/drugs",
+			"time": 19,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				19
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "08785f4d-fb29-43e5-9d9a-b5bd168c3523",
+			"name": "Drugs/Update",
+			"url": "http://localhost:5043/api/drugs/10",
+			"time": 17,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				17
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "964b0cf1-914f-4302-91fe-e3855cb32e50",
+			"name": "Drugs/UpdateStatus",
+			"url": "http://localhost:5043/api/drugs/10/status",
+			"time": 14,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				14
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "68546e5f-1518-4d75-b4f8-6c4598850aef",
+			"name": "Drug/Delete",
+			"url": "http://localhost:5043/api/drugs/10",
+			"time": 12,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				12
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1203,
+	"collection": {
+		"requests": [
+			{
+				"id": "9399569c-5f9b-4c5f-8194-e2b28dc10796",
+				"method": "POST"
+			},
+			{
+				"id": "b2e2186d-d4e2-411d-831b-a195bfe1ea24",
+				"method": "POST"
+			},
+			{
+				"id": "24070aec-0bb5-4b6b-bb12-e591e0a33321",
+				"method": "GET"
+			},
+			{
+				"id": "7486a7d1-e16e-42b5-9b1b-2614b4012a24",
+				"method": "GET"
+			},
+			{
+				"id": "eed8f809-9f68-4d67-b7fd-17df06451550",
+				"method": "GET"
+			},
+			{
+				"id": "4a5f6137-7291-4a98-aafb-5972f037dee6",
+				"method": "GET"
+			},
+			{
+				"id": "4be20102-77fd-47e9-8188-89be37b1ed4e",
+				"method": "GET"
+			},
+			{
+				"id": "51e44a9a-c313-4f46-9571-978f75db1937",
+				"method": "POST"
+			},
+			{
+				"id": "08785f4d-fb29-43e5-9d9a-b5bd168c3523",
+				"method": "PUT"
+			},
+			{
+				"id": "964b0cf1-914f-4302-91fe-e3855cb32e50",
+				"method": "PATCH"
+			},
+			{
+				"id": "68546e5f-1518-4d75-b4f8-6c4598850aef",
+				"method": "DELETE"
+			}
+		]
+	}
+}

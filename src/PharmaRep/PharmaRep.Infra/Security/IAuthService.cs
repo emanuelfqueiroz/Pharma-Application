@@ -11,5 +11,5 @@ public interface IAuthService
     /// <summary>
     /// Returns userId if registration was successful, otherwise null
     /// </summary>
-    Task<RegisteredUser?> RegisterAsync(string Name, string Email, string Password);
+    Task<RegisterUserResponse> RegisterAsync(string Name, string Email, string Password);
 }

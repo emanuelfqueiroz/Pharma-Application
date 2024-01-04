@@ -39,16 +39,19 @@ namespace PharmaRep.WebAPI.Controllers
         [HttpPost("signup")]
         public async Task<IActionResult> Register([FromBody] RegisterUser user)
         {
-            var registeredUser = await _authService.RegisterAsync(user.FullName, user.Email, user.Password);
+            var response = await _authService.RegisterAsync(user.FullName, user.Email, user.Password);
 
-            if (registeredUser != null)
+            if (response!.IsSuccess)
             {
+                var registeredUser = response.RegisteredUser;
                 logger.LogInformation("User {email} registered successfully ", user.Email);
                 return Ok(registeredUser);
             }
-
-            logger.LogWarning("User {email} registration unsuccessful", user.Email);
-            return BadRequest(new { message = "User registration unsuccessful" });
+            else
+            {
+                logger.LogWarning(response.ErrorMessage);
+                return BadRequest(new { message = response.ErrorMessage });
+            }
         }
     }
 }

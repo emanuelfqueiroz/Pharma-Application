@@ -33,7 +33,8 @@ public static class ServiceExtensions
         services.AddTransient<IQueryHandler<DrugByIdQuery, DrugAggregate?>, DrugByIdQueryHandler>();
         services.AddTransient<ICommandHandler<DectivateDrugCommand, DeactivatedEntity>, DeactivateDrugCommandHandler>();
         services.AddTransient<ICommandHandler<UpdateDrugCommand, EntityUpdated>, UpdateDrugCommandHandler>();
-        services.AddTransient<ICommandHandler<RegisterDrugCommand, EntityCreated?>, RegisterDrugCommandHandler>();
+        services.AddTransient<ICommandHandler<UpdateDrugStatusCommand, EntityUpdated>, UpdateDrugStatusCommandHandler>();
+        services.AddTransient<ICommandHandler<RegisterDrugCommand, EntityCreated>, RegisterDrugCommandHandler>();
         //services.AddScoped<ICommandHandler<Command, Response, CommandHandler>>
         //services.AddScoped<IQueryHandler<Query, IEnumerable<>>, QueryHandler>();
 

@@ -1,6 +1,7 @@
-﻿namespace PharmaRep.Application.Common
+﻿
+namespace PharmaRep.Application.Common
 {
-    public class CommandResponse<T>
+    public record CommandResponse<T>
     {
         public T? Data { get; set; }
         public bool IsSuccess { get; set; }
@@ -21,15 +22,20 @@
         {
             return new CommandResponse<T>(false, message);
         }
+
+        public static CommandResponse<T> NotFound()
+        {
+            return CommandResponse<T>.Error("Object not found");
+        }
     }
     public record EntityCreated
     {
         public int Id { get; set; }
     }
-    public record DeactivatedEntity(int id, int byUserId)
+    public record DeactivatedEntity(int Id, int ByUserId)
     {
-        public int Id { get; set; } = id;
-        public int ByUserId { get; set; } = byUserId;
+        public int Id { get; set; } = Id;
+        public int ByUserId { get; set; } = ByUserId;
         public const string Operation = "Entity has been deactivated (soft delete)";
     }
     public record EntityUpdated

@@ -65,10 +65,20 @@ public class AuthService : IAuthService
         return new TokenCredential(tokenHandler.WriteToken(token));
     }
 
-    public async Task<RegisteredUser?> RegisterAsync(string Name, string Email, string Password)
+    public async Task<RegisterUserResponse> RegisterAsync(string name, string email, string password)
     {
-        var user = await _authRepository.AddUserAsync(Name, Email, Argon2.Hash(Password));
-        return user != null ? new RegisteredUser(user.Id, user.Email) : null;
+        var userDb = await _authRepository.GetUserAsync(email);
+        if(userDb != null)
+        {
+            return RegisterUserResponse.Error($"User {email} already exists");
+        }
+        var user = await _authRepository.AddUserAsync(name, email, Argon2.Hash(password));
+        if (user != null)
+        {
+            return RegisterUserResponse.Success(
+                new RegisteredUser(user.Id, user.Email));
+        }
+        return RegisterUserResponse.Error($"User {email} register unsuccessful");
     }
 
 }

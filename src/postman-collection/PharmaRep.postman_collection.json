@@ -1,0 +1,497 @@
+{
+	"info": {
+		"_postman_id": "db19165e-a8cc-4dcc-9c18-5ce6f152f98c",
+		"name": "PharmaRep",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1583178"
+	},
+	"item": [
+		{
+			"name": "User/Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"FullName\": \"string\",\r\n  \"email\": \"myuser2@email.com\",\r\n  \"password\": \"password-test\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/User/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5043",
+					"path": [
+						"api",
+						"User",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User/Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Save the token from the response body to an environment or global variable\r",
+							"var token = pm.response.json().token;\r",
+							"pm.environment.set(\"token\", token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"myuser2@email.com\",\r\n  \"password\": \"password-test\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5043",
+					"path": [
+						"api",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MedicalConditions",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"filterName\": \"\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/MedicalConditions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5043",
+					"path": [
+						"api",
+						"MedicalConditions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MedicalReactions",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"filterName\": \"\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/MedicalReactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5043",
+					"path": [
+						"api",
+						"MedicalReactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Brand/List",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"filterName\": \"\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/Brands",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5043",
+					"path": [
+						"api",
+						"Brands"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Drugs/List",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"brandName\": \"Brand\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/Drugs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5043",
+					"path": [
+						"api",
+						"Drugs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Drugs/ GetById",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"brandName\": \"Brand\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/Drugs/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5043",
+					"path": [
+						"api",
+						"Drugs",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Drugs/Create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"brandId\": 1,\r\n  \"name\": \"Medicine By API\",\r\n  \"description\": \"Description of Medicine created by API\",\r\n  \"adverseReactions\": [\r\n    \r\n  ],\r\n  \"indications\": [\r\n    1,3\r\n  ]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/drugs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5043",
+					"path": [
+						"api",
+						"drugs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Drugs/Update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 1,\r\n\r\n  \"name\": \"New Medicine\",\r\n  \"description\": \"Updated Medicine\",\r\n  \"drugStatus\": 1,\r\n  \"adverseReactions\": [\r\n    1,2,3\r\n  ],\r\n  \"indications\": [\r\n   \r\n  ]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/drugs/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5043",
+					"path": [
+						"api",
+						"drugs",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Drugs/UpdateStatus",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 1,\r\n\r\n  \"name\": \"New Medicine\",\r\n  \"description\": \"Updated Medicine\",\r\n  \"drugStatus\": 1,\r\n  \"adverseReactions\": [\r\n    1,2,3\r\n  ],\r\n  \"indications\": [\r\n   \r\n  ]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/drugs/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5043",
+					"path": [
+						"api",
+						"drugs",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Drugs/UpdateStatus Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 1,\r\n\r\n  \"name\": \"New Medicine\",\r\n  \"description\": \"Updated Medicine\",\r\n  \"drugStatus\": 1,\r\n  \"adverseReactions\": [\r\n    1,2,3\r\n  ],\r\n  \"indications\": [\r\n   \r\n  ]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/drugs/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5043",
+					"path": [
+						"api",
+						"drugs",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
