@@ -9,7 +9,7 @@ namespace _PharmaRep.WebAPI.V1.Controllers
 {
 
     [ApiVersion(1.0)]
-    [Route("api/user")]
+    [Route("api/v1/user")]
     [ApiController]
     public class AuthenticationController(IAuthService authService, ILogger<AuthenticationController> logger) : ControllerBase
     {
