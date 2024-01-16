@@ -7,19 +7,18 @@ using PharmaRep.Application.Medicine.Commands.RegisterDrug;
 using PharmaRep.Application.Medicine.Queries;
 using PharmaRep.Domain.Medicine.Aggregates;
 using PharmaRep.Domain.Medicine.Entities;
-using PharmaRep.Domain.Medicine.ValueObjects;
 using System.ComponentModel.DataAnnotations;
 
-namespace PharmaRep.WebAPI.Controllers
+namespace _PharmaRep.WebAPI.V1.Controllers
 {
-    [ApiVersion(1.0)]
-    [Route("api/drugs")]
+    [ApiVersion(2.0)]
+    [Route("/api/v1/drugs")]
     [ApiController]
     public class DrugsController(ILogger<AuthenticationController> logger) : ControllerBase
     {
         [Authorize]
         [HttpGet]
-        public async Task<IActionResult> GetDrugs([FromQuery] DrugQuery query,
+        public async Task<IActionResult> Get([FromQuery] DrugQuery query,
             [FromServices] IQueryHandler<DrugQuery, IEnumerable<DrugInformation>> handler)
         {
             var response = await handler.HandleAsync(query ?? new());
@@ -30,33 +29,30 @@ namespace PharmaRep.WebAPI.Controllers
         [Authorize]
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetDrug(int id, [FromServices] IQueryHandler<DrugByIdQuery, DrugAggregate> handler)
+        public async Task<IActionResult> Get(int id, [FromServices] IQueryHandler<DrugByIdQuery, DrugAggregate> handler)
         {
             var drug = await handler.HandleAsync(new DrugByIdQuery(id));
-
             if (drug is null)
             {
                 return NotFound();
             }
-
             return Ok(drug);
 
         }
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> PostAdd([FromBody] RegisterDrugCommand command,
+        public async Task<IActionResult> Add([FromBody] RegisterDrugCommand command,
             [FromServices] ICommandHandler<RegisterDrugCommand, EntityCreated> handler)
         {
             try
             {
                 var response = await handler.HandleAsync(command);
-                if (response.IsSuccess)
+                if (!response.IsSuccess)
                 {
-                    logger.LogInformation("Drug {id}:{name} added successfully ", response?.Data?.Id, command.Name);
-                    return CreatedAtAction(nameof(GetDrug), new { id = response.Data!.Id }, response);
+                    return Conflict(response.Message);
                 }
-                return Conflict(response.Message);
+                return CreatedAtAction(nameof(Get), new { id = response.Data!.Id }, response);
             }
             catch (Exception ex)
             {
@@ -66,7 +62,7 @@ namespace PharmaRep.WebAPI.Controllers
         }
         [Authorize]
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateDrugAsync(int id, [FromBody] UpdateDrugCommand command,
+        public async Task<IActionResult> Update(int id, [FromBody] UpdateDrugCommand command,
             [FromServices] ICommandHandler<UpdateDrugCommand, EntityUpdated> handler)
         {
             try
@@ -90,23 +86,12 @@ namespace PharmaRep.WebAPI.Controllers
 
         [Authorize]
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteDrugAsync(int id, [FromServices] ICommandHandler<DectivateDrugCommand, DeactivatedEntity> handler)
+        public async Task<IActionResult> Delete(int id, [FromServices] ICommandHandler<DectivateDrugCommand, DeactivatedEntity> handler)
         {
             try
             {
                 var response = await handler.HandleAsync(new DectivateDrugCommand(id));
-
-                if (response.IsSuccess)
-                {
-                    logger.LogInformation("Drug {id} deactivated successfully ", id);
-                    return Ok(response);
-                }
-                else
-                {
-                    logger.LogInformation("Drug {id} not deleted ", id);
-                    return BadRequest(response.Message);
-                }
-
+                return response.IsSuccess ? Ok(response) : Problem(response.Message);
             }
             catch (Exception ex)
             {
@@ -117,7 +102,7 @@ namespace PharmaRep.WebAPI.Controllers
 
         [Authorize]
         [HttpPatch("{id}/status")]
-        public async Task<IActionResult> UpdateDrugStatus(int id,
+        public async Task<IActionResult> Update(int id,
             [FromBody][Required] UpdateDrugStatusCommand command,
             [FromServices] ICommandHandler<UpdateDrugStatusCommand, EntityUpdated> handler)
         {
@@ -129,13 +114,11 @@ namespace PharmaRep.WebAPI.Controllers
 
                 if (response.IsSuccess)
                 {
-                    logger.LogInformation("Status of drug {id} was updated successfully", id);
                     return Ok(response);
                 }
                 else
                 {
-                    logger.LogInformation("Drug {id} not deleted ", id);
-                    return BadRequest(response.Message);
+                    return Problem(response.Message);
                 }
 
             }

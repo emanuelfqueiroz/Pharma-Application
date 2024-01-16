@@ -1,13 +1,11 @@
 ﻿using Asp.Versioning;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PharmaRep.Application.Common;
 using PharmaRep.Infra.Security;
 using PharmaRep.Infra.Security.Models;
-using System.IdentityModel.Tokens.Jwt;
 
 
-namespace PharmaRep.WebAPI.Controllers
+namespace _PharmaRep.WebAPI.V1.Controllers
 {
 
     [ApiVersion(1.0)]
