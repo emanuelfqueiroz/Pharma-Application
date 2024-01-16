@@ -12,10 +12,10 @@ Pharma-Application is a project designed with minimal external dependencies. Thi
 
 #### Concepts
 - Clean Architecture
-- TDD - Test-Driven-Development
 - CQRS (From Scratch) 
 - UnitOfWork (From Scratch) 
 - JWT Authentication
+- Unit Tests
     
 ## Getting Started
 
