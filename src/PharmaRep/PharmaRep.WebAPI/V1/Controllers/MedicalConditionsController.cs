@@ -8,7 +8,7 @@ using PharmaRep.Domain.Medicine.Entities;
 namespace _PharmaRep.WebAPI.V1.Controllers
 {
     [ApiVersion(1.0)]
-    [Route("api/v1/medicalconditions")]
+    [Route("api/v{version:apiVersion}/medicalconditions")]
     [ApiController]
     public class MedicalConditionController(IQueryHandler<MedicalConditionQuery, IEnumerable<MedicalCondition>> handler) : ControllerBase
     {

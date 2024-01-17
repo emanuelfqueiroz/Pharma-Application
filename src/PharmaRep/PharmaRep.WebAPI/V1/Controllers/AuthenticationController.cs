@@ -5,51 +5,50 @@ using PharmaRep.Infra.Security;
 using PharmaRep.Infra.Security.Models;
 
 
-namespace _PharmaRep.WebAPI.V1.Controllers
+namespace PharmaRep.WebAPI.Controllers;
+
+
+[ApiVersion(1.0)]
+[Route("api/v1/[controller]")]
+[ApiController]
+public class AuthenticationController(IAuthService authService, ILogger<AuthenticationController> logger) : ControllerBase
 {
+    private readonly IAuthService _authService = authService;
 
-    [ApiVersion(1.0)]
-    [Route("api/v1/user")]
-    [ApiController]
-    public class AuthenticationController(IAuthService authService, ILogger<AuthenticationController> logger) : ControllerBase
+    // POST: auth/login
+    [AllowAnonymous]
+    [HttpPost("login")]
+    public async Task<IActionResult> Login([FromBody] LoginUser user)
     {
-        private readonly IAuthService _authService = authService;
+        var loggedInUser = await _authService.LoginAsync(user.Email, user.Password);
 
-        // POST: auth/login
-        [AllowAnonymous]
-        [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginUser user)
+        if (loggedInUser != null)
         {
-            var loggedInUser = await _authService.LoginAsync(user.Email, user.Password);
-
-            if (loggedInUser != null)
-            {
-                logger.LogInformation("User {email} logged in successfully", user.Email);
-                return Ok(loggedInUser);
-            }
-
-            logger.LogWarning("User {email} login unsuccessful", user.Email);
-            return BadRequest(new { message = "User login unsuccessful" });
+            logger.LogInformation("User {email} logged in successfully", user.Email);
+            return Ok(loggedInUser);
         }
 
-        // POST: auth/register
-        [AllowAnonymous]
-        [HttpPost("signup")]
-        public async Task<IActionResult> Register([FromBody] RegisterUser user)
-        {
-            var response = await _authService.RegisterAsync(user.FullName, user.Email, user.Password);
+        logger.LogWarning("User {email} login unsuccessful", user.Email);
+        return BadRequest(new { message = "User login unsuccessful" });
+    }
 
-            if (response!.IsSuccess)
-            {
-                var registeredUser = response.RegisteredUser;
-                logger.LogInformation("User {email} registered successfully ", user.Email);
-                return Ok(registeredUser);
-            }
-            else
-            {
-                logger.LogWarning(response.ErrorMessage);
-                return BadRequest(new { message = response.ErrorMessage });
-            }
+    // POST: auth/register
+    [AllowAnonymous]
+    [HttpPost("signup")]
+    public async Task<IActionResult> Register([FromBody] RegisterUser user)
+    {
+        var response = await _authService.RegisterAsync(user.FullName, user.Email, user.Password);
+
+        if (response!.IsSuccess)
+        {
+            var registeredUser = response.RegisteredUser;
+            logger.LogInformation("User {email} registered successfully ", user.Email);
+            return Ok(registeredUser);
+        }
+        else
+        {
+            logger.LogWarning(response.ErrorMessage);
+            return BadRequest(new { message = response.ErrorMessage });
         }
     }
 }

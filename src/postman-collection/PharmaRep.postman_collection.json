@@ -22,18 +22,19 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"FullName\": \"string\",\r\n  \"email\": \"myuser2@email.com\",\r\n  \"password\": \"password-test\"\r\n}"
+					"raw": "{\r\n  \"FullName\": \"string\",\r\n  \"email\": \"{{user}}\",\r\n  \"password\": \"{{password}}\"\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/User/signup",
+					"raw": "http://localhost:8000/api/v1/authentication/signup",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5043",
+					"port": "8000",
 					"path": [
 						"api",
-						"User",
+						"v1",
+						"authentication",
 						"signup"
 					]
 				}
@@ -69,18 +70,19 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"email\": \"myuser2@email.com\",\r\n  \"password\": \"password-test\"\r\n}"
+					"raw": "{\r\n  \"email\": \"{{user}}\",\r\n  \"password\": \"{{password}}\"\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/user/login",
+					"raw": "http://localhost:8000/api/v1/authentication/login",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5043",
+					"port": "8000",
 					"path": [
 						"api",
-						"user",
+						"v1",
+						"authentication",
 						"login"
 					]
 				}
@@ -119,14 +121,15 @@
 					"raw": "{\r\n  \"filterName\": \"\"\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/MedicalConditions",
+					"raw": "http://localhost:8000/api/v1/MedicalConditions",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5043",
+					"port": "8000",
 					"path": [
 						"api",
+						"v1",
 						"MedicalConditions"
 					]
 				}
@@ -165,14 +168,15 @@
 					"raw": "{\r\n  \"filterName\": \"\"\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/MedicalReactions",
+					"raw": "http://localhost:8000/api/v1/MedicalReactions",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5043",
+					"port": "8000",
 					"path": [
 						"api",
+						"v1",
 						"MedicalReactions"
 					]
 				}
@@ -211,14 +215,15 @@
 					"raw": "{\r\n  \"filterName\": \"\"\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/Brands",
+					"raw": "http://localhost:8000/api/v1/Brands",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5043",
+					"port": "8000",
 					"path": [
 						"api",
+						"v1",
 						"Brands"
 					]
 				}
@@ -257,14 +262,15 @@
 					"raw": "{\r\n  \"brandName\": \"Brand\"\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/Drugs",
+					"raw": "http://localhost:8000/api/v1/Drugs",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5043",
+					"port": "8000",
 					"path": [
 						"api",
+						"v1",
 						"Drugs"
 					]
 				}
@@ -303,16 +309,17 @@
 					"raw": "{\r\n  \"brandName\": \"Brand\"\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/Drugs/1",
+					"raw": "http://localhost:8000/api/v1/Drugs/5",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5043",
+					"port": "8000",
 					"path": [
 						"api",
+						"v1",
 						"Drugs",
-						"1"
+						"5"
 					]
 				}
 			},
@@ -344,17 +351,18 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"brandId\": 1,\r\n  \"name\": \"Medicine By API\",\r\n  \"description\": \"Description of Medicine created by API\",\r\n  \"adverseReactions\": [\r\n    \r\n  ],\r\n  \"indications\": [\r\n    1,3\r\n  ]\r\n}"
+					"raw": "{\r\n  \"brandId\": 4,\r\n  \"name\": \"Medicine By API\",\r\n  \"description\": \"Description of Medicine created by API\",\r\n  \"adverseReactions\": [\r\n    1,2,3\r\n  ],\r\n  \"indications\": [\r\n    1,3\r\n  ]\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/drugs",
+					"raw": "http://localhost:8000/api/v1/drugs",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5043",
+					"port": "8000",
 					"path": [
 						"api",
+						"v1",
 						"drugs"
 					]
 				}
@@ -387,19 +395,20 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"id\": 1,\r\n\r\n  \"name\": \"New Medicine\",\r\n  \"description\": \"Updated Medicine\",\r\n  \"drugStatus\": 1,\r\n  \"adverseReactions\": [\r\n    1,2,3\r\n  ],\r\n  \"indications\": [\r\n   \r\n  ]\r\n}"
+					"raw": "{\r\n  \"brandId\": 2,\r\n  \"name\": \"New Medicine\",\r\n  \"description\": \"Changed Description for this Drug\",\r\n  \"drugStatus\": 1,\r\n  \"adverseReactions\": [\r\n    1,2,3\r\n  ],\r\n  \"indications\": [\r\n    3\r\n  ]\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/drugs/1",
+					"raw": "http://localhost:8000/api/v1/drugs/10",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5043",
+					"port": "8000",
 					"path": [
 						"api",
+						"v1",
 						"drugs",
-						"1"
+						"10"
 					]
 				}
 			},
@@ -418,7 +427,7 @@
 						}
 					]
 				},
-				"method": "PUT",
+				"method": "PATCH",
 				"header": [
 					{
 						"key": "accept",
@@ -431,26 +440,28 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"id\": 1,\r\n\r\n  \"name\": \"New Medicine\",\r\n  \"description\": \"Updated Medicine\",\r\n  \"drugStatus\": 1,\r\n  \"adverseReactions\": [\r\n    1,2,3\r\n  ],\r\n  \"indications\": [\r\n   \r\n  ]\r\n}"
+					"raw": "{  \r\n  \"newStatus\": 1\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/drugs/1",
+					"raw": "http://localhost:8000/api/v1/drugs/10/status",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5043",
+					"port": "8000",
 					"path": [
 						"api",
+						"v1",
 						"drugs",
-						"1"
+						"10",
+						"status"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Drugs/UpdateStatus Copy",
+			"name": "Drug/Delete",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -462,7 +473,7 @@
 						}
 					]
 				},
-				"method": "PUT",
+				"method": "DELETE",
 				"header": [
 					{
 						"key": "accept",
@@ -475,19 +486,20 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"id\": 1,\r\n\r\n  \"name\": \"New Medicine\",\r\n  \"description\": \"Updated Medicine\",\r\n  \"drugStatus\": 1,\r\n  \"adverseReactions\": [\r\n    1,2,3\r\n  ],\r\n  \"indications\": [\r\n   \r\n  ]\r\n}"
+					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/drugs/1",
+					"raw": "http://localhost:8000/api/v1/drugs/10",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5043",
+					"port": "8000",
 					"path": [
 						"api",
+						"v1",
 						"drugs",
-						"1"
+						"10"
 					]
 				}
 			},

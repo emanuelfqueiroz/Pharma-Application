@@ -8,7 +8,7 @@ using PharmaRep.Domain.Medicine.Entities;
 namespace _PharmaRep.WebAPI.V1.Controllers
 {
     [ApiVersion(1.0)]
-    [Route("api/v1/medicalreactions")]
+    [Route("api/v{version:apiVersion}/medicalreactions")]
     [ApiController]
     public class MedicalReactionsController(IQueryHandler<MedicalReactionQuery, IEnumerable<MedicalReaction>> handler) : ControllerBase
     {

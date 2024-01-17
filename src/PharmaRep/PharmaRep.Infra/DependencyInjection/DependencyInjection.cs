@@ -17,11 +17,11 @@ using PharmaRep.Infra.Security;
 
 namespace PharmaRep.Infra.DependencyInjection;
 
-//create class DI    //create class DI that receive Initialize dependency injection
-public static class ServiceExtensions
+//create class DI    //create class DI that receive AddServices dependency injection
+public static class DependencyInjection
 {
     //create method that receive IServiceCollection
-    public static IServiceCollection Initialize(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddServices(this IServiceCollection services, IConfiguration configuration)
     {
 
         
@@ -56,32 +56,6 @@ public static class ServiceExtensions
         services.AddScoped<IMedicalReactionRepository, MedicalReactionRepository>();
         services.AddScoped<IDrugRepository, DrugRepository>();
 
-
-
-
-
-
-
-
-        //services.AddScoped<IDrugRepository, DrugRepository>();
-        //services.AddScoped<IUserRepository, UserRepository>();
-        //services.AddScoped<IUnitOfWork, UnitOfWork>();
-        //services.AddScoped<IPharmacyRepository, PharmacyRepository>();
-        //services.AddScoped<ICustomerRepository, CustomerRepository>();
-        //services.AddScoped<IOrderRepository, OrderRepository>();
-        //services.AddScoped<IPrescriptionRepository, PrescriptionRepository>();
-        //services.AddScoped<IPrescriptionDrugRepository, PrescriptionDrugRepository>();
-        //services.AddScoped<IOrderDrugRepository, OrderDrugRepository>();
-        //services.AddScoped<IBrandRepository, BrandRepository>();
-        //services.AddScoped<IPharmacyDrugRepository, PharmacyDrugRepository>();
-        //services.AddScoped<IEmailService, EmailService>();
-        ////add scoped
-        //services.AddDbContext<PharmaRepDbContext>(options =>
-        //    options.UseSqlServer(configuration.GetConnectionString("PharmaRepDbContext")));
-        ////add scoped
-        //services.AddAutoMapper(typeof(MapperProfile));
-        ////return services
-        ///
         return services;
     }
 }

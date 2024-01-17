@@ -1,4 +1,5 @@
-﻿using Asp.Versioning;
+﻿using _PharmaRep.WebAPI.Common;
+using Asp.Versioning;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PharmaRep.Application.Common;
@@ -11,14 +12,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace _PharmaRep.WebAPI.V1.Controllers
 {
-    [ApiVersion(2.0)]
-    [Route("/api/v1/drugs")]
+    [ApiVersion(1.0)]
+    [Route("/api/v1/[controller]")]
     [ApiController]
-    public class DrugsController(ILogger<AuthenticationController> logger) : ControllerBase
+    public class DrugsController(ILogger<DrugsController> logger) : ControllerBase
     {
         [Authorize]
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] DrugQuery query,
+        public async Task<IActionResult> List([FromQuery] DrugQuery query,
             [FromServices] IQueryHandler<DrugQuery, IEnumerable<DrugInformation>> handler)
         {
             var response = await handler.HandleAsync(query ?? new());
@@ -37,7 +38,6 @@ namespace _PharmaRep.WebAPI.V1.Controllers
                 return NotFound();
             }
             return Ok(drug);
-
         }
 
         [Authorize]
@@ -48,11 +48,10 @@ namespace _PharmaRep.WebAPI.V1.Controllers
             try
             {
                 var response = await handler.HandleAsync(command);
-                if (!response.IsSuccess)
-                {
-                    return Conflict(response.Message);
-                }
-                return CreatedAtAction(nameof(Get), new { id = response.Data!.Id }, response);
+                return response.Match(
+                    _ => CreatedAtAction(nameof(Get), new { id = response.Data!.Id }, response),
+                    _ => Problem(response.Message));
+                
             }
             catch (Exception ex)
             {
@@ -69,13 +68,9 @@ namespace _PharmaRep.WebAPI.V1.Controllers
             {
                 command.Id = id;
                 var response = await handler.HandleAsync(command);
-
-                if (response == null)
-                {
-                    return NotFound();
-                }
-
-                return Ok(response);
+                return response.Match(
+                     _ => Ok(response),
+                     _ => Problem(response.Message));
             }
             catch (Exception ex)
             {
@@ -91,7 +86,9 @@ namespace _PharmaRep.WebAPI.V1.Controllers
             try
             {
                 var response = await handler.HandleAsync(new DectivateDrugCommand(id));
-                return response.IsSuccess ? Ok(response) : Problem(response.Message);
+                return response.Match(
+                  _ => Ok(response),
+                  _ => Problem(response.Message));
             }
             catch (Exception ex)
             {
@@ -102,25 +99,18 @@ namespace _PharmaRep.WebAPI.V1.Controllers
 
         [Authorize]
         [HttpPatch("{id}/status")]
-        public async Task<IActionResult> Update(int id,
+        public async Task<IActionResult> Patch(int id,
             [FromBody][Required] UpdateDrugStatusCommand command,
             [FromServices] ICommandHandler<UpdateDrugStatusCommand, EntityUpdated> handler)
         {
-
             try
             {
                 command.Id = id;
                 var response = await handler.HandleAsync(command);
-
-                if (response.IsSuccess)
-                {
-                    return Ok(response);
-                }
-                else
-                {
-                    return Problem(response.Message);
-                }
-
+                return response.Match(
+                    _ => Ok(response),
+                    _ => Problem(response.Message)
+                );
             }
             catch (Exception ex)
             {

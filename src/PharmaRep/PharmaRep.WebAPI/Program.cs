@@ -11,7 +11,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
 
 builder.Services.AddEndpointsApiExplorer()
@@ -22,13 +21,14 @@ builder.Services.AddApiVersioning(
     opt =>
     {
         opt.ApiVersionReader = new HeaderApiVersionReader("api-version");
-        opt.AssumeDefaultVersionWhenUnspecified = true;
+        opt.ReportApiVersions = true;
+
         opt.DefaultApiVersion = new ApiVersion(1.0);
     });
+    
 
+builder.Services.AddServices(builder.Configuration); //Dependency Injection Layer
 AddJwtAuthentication(builder);
-builder.Services.Initialize(builder.Configuration); //Dependency Injection Layer
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
